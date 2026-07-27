@@ -1,12 +1,11 @@
 /* ==========================================
-   CURSOR NEÓN PERSONALIZADO FLUIDO
+   1. CURSOR NEÓN PERSONALIZADO FLUIDO
    ========================================== */
 const cursor = document.getElementById('custom-cursor');
 const cursorBlur = document.getElementById('cursor-blur');
 
 if (cursor && cursorBlur) {
     document.addEventListener('mousemove', (e) => {
-        // Posicionamiento exacto
         cursor.style.left = `${e.clientX}px`;
         cursor.style.top = `${e.clientY}px`;
         
@@ -14,7 +13,6 @@ if (cursor && cursorBlur) {
         cursorBlur.style.top = `${e.clientY}px`;
     });
 
-    // Efecto de expansión al pasar sobre botones y enlaces
     const interactiveElements = document.querySelectorAll('a, button, input, .project-card, .skill-card');
 
     interactiveElements.forEach((el) => {
@@ -31,8 +29,39 @@ if (cursor && cursorBlur) {
         });
     });
 }
+
 /* ==========================================
-   2. COPIAR EMAIL AL PORTAPAPELES
+   2. BOTÓN DE CONTROL DEL FONDO CANVAS
+   ========================================== */
+const toggleBgBtn = document.getElementById('toggle-bg-btn');
+const toggleBgText = document.getElementById('toggle-bg-text');
+
+if (toggleBgBtn) {
+    // Sincronizar estado inicial del botón con localStorage
+    if (typeof isBgActive !== 'undefined' && !isBgActive) {
+        toggleBgBtn.classList.add('disabled');
+        if (toggleBgText) toggleBgText.innerText = "Fondo OFF";
+    }
+
+    toggleBgBtn.addEventListener('click', () => {
+        if (typeof isBgActive !== 'undefined') {
+            if (isBgActive) {
+                stopCanvasAnimation();
+                toggleBgBtn.classList.add('disabled');
+                if (toggleBgText) toggleBgText.innerText = "Fondo OFF";
+                localStorage.setItem('bg_active', 'false');
+            } else {
+                startCanvasAnimation();
+                toggleBgBtn.classList.remove('disabled');
+                if (toggleBgText) toggleBgText.innerText = "Fondo ON";
+                localStorage.setItem('bg_active', 'true');
+            }
+        }
+    });
+}
+
+/* ==========================================
+   3. COPIAR EMAIL AL PORTAPAPELES
    ========================================== */
 function copyEmail(button) {
     const email = "adrianteeeen@gmail.com";
@@ -62,7 +91,7 @@ function copyEmail(button) {
 }
 
 /* ==========================================
-   3. TERMINAL INTERACTIVA
+   4. TERMINAL INTERACTIVA
    ========================================== */
 const terminalInput = document.getElementById('terminal-input');
 const terminalBody = document.getElementById('terminal-body');
@@ -78,7 +107,6 @@ if (terminalInput) {
 }
 
 function processCommand(cmd) {
-    // Añadir línea de lo que escribió el usuario
     const userLine = document.createElement('p');
     userLine.className = 'term-line';
     userLine.innerHTML = `<span class="prompt">&gt; ${escapeHtml(cmd)}</span>`;

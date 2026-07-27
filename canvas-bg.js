@@ -4,6 +4,8 @@ const ctx = canvas.getContext('2d');
 let particles = [];
 const particleCount = 70; // Cantidad de nodos cibernéticos
 const maxDistance = 120;  // Distancia máxima para conectar líneas
+let animationFrameId = null;
+let isBgActive = true;
 
 let mouse = {
     x: null,
@@ -39,15 +41,12 @@ class Particle {
     }
 
     update() {
-        // Movimiento básico
         this.x += this.vx;
         this.y += this.vy;
 
-        // Rebote en bordes
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-        // Interacción con el cursor
         if (mouse.x && mouse.y) {
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
@@ -64,13 +63,12 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#818cf8'; // Color índigo brillante
+        ctx.fillStyle = '#818cf8';
         ctx.fill();
     }
 }
 
-// Inicializar partículas
-function init() {
+function initCanvas() {
     resizeCanvas();
     particles = [];
     for (let i = 0; i < particleCount; i++) {
@@ -78,7 +76,6 @@ function init() {
     }
 }
 
-// Dibujar conexiones entre nodos
 function connectParticles() {
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -91,7 +88,7 @@ function connectParticles() {
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.25})`; // Color de red tipo ciberpunk
+                ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.25})`;
                 ctx.lineWidth = 1;
                 ctx.stroke();
             }
@@ -99,8 +96,10 @@ function connectParticles() {
     }
 }
 
-// Bucle de animación a 60fps
+// Bucle de animación
 function animate() {
+    if (!isBgActive) return;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach(particle => {
@@ -109,8 +108,32 @@ function animate() {
     });
 
     connectParticles();
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
 }
 
-init();
-animate();
+// Funciones globales para activar / desactivar desde el botón
+function stopCanvasAnimation() {
+    isBgActive = false;
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function startCanvasAnimation() {
+    if (!isBgActive) {
+        isBgActive = true;
+        animate();
+    }
+}
+
+// Cargar preferencia guardada o iniciar por defecto
+const savedBgPref = localStorage.getItem('bg_active');
+
+initCanvas();
+
+if (savedBgPref === 'false') {
+    isBgActive = false;
+} else {
+    animate();
+}

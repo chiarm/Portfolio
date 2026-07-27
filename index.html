@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrián Ramos Márquez | Desarrollador Full Stack Jr.</title>
-    <!-- Favicon Ciberpunk (Sugerencia 6) -->
+    <!-- Favicon Ciberpunk -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <!-- Estilos CSS externos -->
     <link rel="stylesheet" href="styles.css">
@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <!-- Cursor Neón Personalizado (Sugerencia 5) -->
+    <!-- Cursor Neón Personalizado -->
     <div id="custom-cursor"></div>
     <div id="cursor-blur"></div>
 
@@ -32,9 +32,16 @@
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
-            <a href="CV.pdf" download class="btn btn-primary">
-                <i data-lucide="download"></i> Descargar CV
-            </a>
+            <div class="header-actions">
+                <a href="CV.pdf" download class="btn btn-primary">
+                    <i data-lucide="download"></i> Descargar CV
+                </a>
+                <!-- Botón de Control del Fondo a la derecha del CV -->
+                <button id="toggle-bg-btn" class="bg-toggle-btn" title="Activar/Desactivar fondo animado">
+                    <i data-lucide="sparkles" id="toggle-bg-icon"></i>
+                    <span id="toggle-bg-text">Fondo ON</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -57,44 +64,9 @@
                 <a href="CV.pdf" download class="btn btn-secondary">
                     <i data-lucide="download"></i> Descargar CV
                 </a>
-                <button class="btn btn-secondary" onclick="copyEmail(this)">
-                    <i data-lucide="copy"></i> <span class="copy-text">Copiar Email</span>
+                <button class="btn btn-primary" onclick="copyEmail(this)">
+                    <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
                 </button>
-            </div>
-
-            <!-- Terminal Interactiva (Sugerencia 1) -->
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="btn-dot red"></span>
-                        <span class="btn-dot yellow"></span>
-                        <span class="btn-dot green"></span>
-                    </div>
-                    <span class="terminal-title">adrian@portfolio:~ (zsh)</span>
-                </div>
-                <div class="terminal-body" id="terminal-body">
-                    <p class="term-line">Escribe <span class="highlight">'help'</span> para ver la lista de comandos disponibles.</p>
-                </div>
-                <div class="terminal-input-line">
-                    <span class="prompt">&gt;</span>
-                    <input type="text" id="terminal-input" placeholder="Escribe un comando..." autocomplete="off">
-                </div>
-            </div>
-
-            <!-- Estadísticas Hi-Tech (Sugerencia 4) -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">+4</span>
-                    <span class="stat-label">Años Exp. Laboral</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">PCEPT™</span>
-                    <span class="stat-label">Certificación Python</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Enfoque Full Stack</span>
-                </div>
             </div>
         </section>
 
