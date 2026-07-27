@@ -40,7 +40,7 @@ if (toggleBgBtn) {
     // Sincronizar estado inicial del botón con localStorage
     if (typeof isBgActive !== 'undefined' && !isBgActive) {
         toggleBgBtn.classList.add('disabled');
-        if (toggleBgText) toggleBgText.innerText = "Fondo OFF";
+        if (toggleBgText) toggleBgText.innerText = "OFF";
     }
 
     toggleBgBtn.addEventListener('click', () => {
@@ -48,12 +48,12 @@ if (toggleBgBtn) {
             if (isBgActive) {
                 stopCanvasAnimation();
                 toggleBgBtn.classList.add('disabled');
-                if (toggleBgText) toggleBgText.innerText = "Fondo OFF";
+                if (toggleBgText) toggleBgText.innerText = "OFF";
                 localStorage.setItem('bg_active', 'false');
             } else {
                 startCanvasAnimation();
                 toggleBgBtn.classList.remove('disabled');
-                if (toggleBgText) toggleBgText.innerText = "Fondo ON";
+                if (toggleBgText) toggleBgText.innerText = "ON";
                 localStorage.setItem('bg_active', 'true');
             }
         }
