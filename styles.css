@@ -504,3 +504,281 @@ main {
     display: none;
   }
 }
+/* Canvas de Fondo Futurista */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Lo sitúa detrás de todo */
+  pointer-events: none; /* Permite hacer clic a través del canvas */
+  opacity: 0.6; /* Transparencia sutil para no molestar a la lectura */
+}
+/* ==========================================
+   ESTILOS FUTURISTAS EN TARJETAS (CARDS)
+   ========================================== */
+
+/* Glassmorphism y bordes dinámicos para Proyectos */
+.project-card {
+  background: rgba(15, 23, 42, 0.65) !important; /* Fondo semi-transparente */
+  backdrop-filter: blur(12px);                   /* Desenfoque de cristal */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto Hover: Resplandor Neón y elevación */
+.project-card:hover {
+  border-color: rgba(129, 140, 248, 0.7) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5),
+              0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+/* Línea Neón superior estilo "Cyber-Scanner" */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #38bdf8);
+  transition: width 0.4s ease;
+}
+
+.project-card:hover::before {
+  width: 100%;
+}
+
+/* Previsualización del proyecto con tono cibernético */
+.project-preview {
+  background: rgba(2, 6, 23, 0.8) !important;
+  color: #38bdf8 !important; /* Texto verde/azul ciber */
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Etiquetas de tecnologías (Tech Tags) estilo Neón */
+.tech-tag {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: #a5b4fc !important;
+  border: 1px solid rgba(129, 140, 248, 0.3) !important;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover .tech-tag {
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+}
+
+/* Glassmorphism y Neón para Competencias Técnicas (Skills) */
+.skill-card {
+  background: rgba(15, 23, 42, 0.5) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  transform: translateY(-3px);
+  background: rgba(30, 41, 59, 0.6) !important;
+  box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.3);
+}
+
+/* Iconos de Habilidades con iluminación */
+.skill-icon {
+  background: rgba(99, 102, 241, 0.15) !important;
+  border: 1px solid rgba(129, 140, 248, 0.4) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+  transform: scale(1.05);
+}
+
+/* Ocultar el cursor por defecto del sistema en toda la web */
+html, body, a, button, input {
+  cursor: none !important;
+}
+
+/* ==========================================
+   CURSOR NEÓN PERSONALIZADO (Ajustado)
+   ========================================== */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  pointer-events: none; /* Crucial para poder hacer clic a través de él */
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+#cursor-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  background: rgba(99, 102, 241, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  filter: blur(8px);
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+}
+
+/* ==========================================
+   TERMINAL INTERACTIVA
+   ========================================== */
+.terminal-container {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 2.5rem;
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.2);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.btn-dot.red { background: #ef4444; }
+.btn-dot.yellow { background: #f59e0b; }
+.btn-dot.green { background: #10b981; }
+
+.terminal-title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.terminal-body {
+  padding: 1rem;
+  max-height: 180px;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+.term-line {
+  margin-bottom: 0.4rem;
+}
+
+.highlight {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prompt {
+  color: #818cf8;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  font-family: inherit;
+  font-size: 0.875rem;
+  width: 100%;
+  outline: none;
+}
+
+/* ==========================================
+   ESTADÍSTICAS HI-TECH
+   ========================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Ajustes de cursor genérico en móviles */
+@media (max-width: 768px) {
+  #custom-cursor, #cursor-blur {
+    display: none;
+  }
+}

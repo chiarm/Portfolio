@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrián Ramos Márquez | Desarrollador Full Stack Jr.</title>
+    <!-- Favicon Ciberpunk (Sugerencia 6) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <!-- Estilos CSS externos -->
     <link rel="stylesheet" href="styles.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+    <!-- Cursor Neón Personalizado (Sugerencia 5) -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <!-- Fondo Futurista Canvas -->
+    <canvas id="bg-canvas"></canvas>
 
     <!-- Header / Nav -->
     <header class="header">
@@ -24,7 +32,9 @@
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
-            <a href="#contacto" class="btn btn-primary">Contactar</a>
+            <a href="CV.pdf" download class="btn btn-primary">
+                <i data-lucide="download"></i> Descargar CV
+            </a>
         </div>
     </header>
 
@@ -35,26 +45,60 @@
                 <span class="badge-dot"></span>
                 Buscando oportunidad como Desarrollador Full Stack
             </div>
-            <h1 class="hero-title">
-                Adrián Ramos Márquez
-            </h1>
+            <h1 class="hero-title">Adrián Ramos Márquez</h1>
             <p class="hero-description">
                 Desarrollador Full Stack Jr. especializado en el ecosistema <strong>Java / Spring Boot</strong> y <strong>Angular</strong>. Certificado oficialmente en Python (PCEPT™) y enfocado en arquitecturas de microservicios, bases de datos SQL/NoSQL y despliegue con Kubernetes.
             </p>
+            
             <div class="hero-actions">
                 <a href="#proyectos" class="btn btn-primary">
                     Ver proyectos <i data-lucide="arrow-right"></i>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <i data-lucide="github"></i> GitHub
+                <a href="CV.pdf" download class="btn btn-secondary">
+                    <i data-lucide="download"></i> Descargar CV
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                    <i data-lucide="linkedin"></i> LinkedIn
-                </a>
+                <button class="btn btn-secondary" onclick="copyEmail(this)">
+                    <i data-lucide="copy"></i> <span class="copy-text">Copiar Email</span>
+                </button>
+            </div>
+
+            <!-- Terminal Interactiva (Sugerencia 1) -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-dot red"></span>
+                        <span class="btn-dot yellow"></span>
+                        <span class="btn-dot green"></span>
+                    </div>
+                    <span class="terminal-title">adrian@portfolio:~ (zsh)</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <p class="term-line">Escribe <span class="highlight">'help'</span> para ver la lista de comandos disponibles.</p>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="prompt">&gt;</span>
+                    <input type="text" id="terminal-input" placeholder="Escribe un comando..." autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Estadísticas Hi-Tech (Sugerencia 4) -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">+4</span>
+                    <span class="stat-label">Años Exp. Laboral</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">PCEPT™</span>
+                    <span class="stat-label">Certificación Python</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Enfoque Full Stack</span>
+                </div>
             </div>
         </section>
 
-<!-- Proyectos Section -->
+        <!-- Proyectos Section -->
         <section id="proyectos" class="section">
             <div class="section-header">
                 <h2 class="section-title">Proyectos Destacados</h2>
@@ -62,16 +106,13 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Proyecto 1: Java / Spring Boot / Angular -->
                 <article class="project-card">
-                    <div class="project-preview">
-                        [ Arquitectura Microservicios + Angular ]
-                    </div>
+                    <div class="project-preview">[ Arquitectura Microservicios + Angular ]</div>
                     <div class="project-body">
                         <div class="project-header">
                             <h3 class="project-title">Sistema Empresarial de Microservicios</h3>
                             <div class="project-links">
-                                <a href="#" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
+                                <a href="https://github.com" target="_blank" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
                                 <a href="#" title="Demo en vivo"><i data-lucide="external-link"></i></a>
                             </div>
                         </div>
@@ -89,16 +130,13 @@
                     </div>
                 </article>
 
-                <!-- Proyecto 2: Python Full Stack / NoSQL -->
                 <article class="project-card">
-                    <div class="project-preview">
-                        [ Aplicación Web Full Stack Python ]
-                    </div>
+                    <div class="project-preview">[ Aplicación Web Full Stack Python ]</div>
                     <div class="project-body">
                         <div class="project-header">
                             <h3 class="project-title">Sistema Web de Gestión & Analítica</h3>
                             <div class="project-links">
-                                <a href="#" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
+                                <a href="https://github.com" target="_blank" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
                                 <a href="#" title="Demo en vivo"><i data-lucide="external-link"></i></a>
                             </div>
                         </div>
@@ -126,20 +164,18 @@
             </div>
 
             <div class="skills-grid">
-<!-- Backend & Lenguajes -->
-<div class="skill-card">
-    <div class="skill-icon"><i data-lucide="server"></i></div>
-    <h3 class="skill-title">Backend & Lenguajes</h3>
-    <ul class="skill-list">
-        <li>Java & Spring Boot / Cloud</li>
-        <li>Python (Certificación PCEPT™)</li>
-        <li>Spring Security (OAuth 2.0, 2FA)</li>
-        <li>REST APIs & Microservicios</li>
-        <li>JPA / Hibernate & Jakarta EE</li>
-    </ul>
-</div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="server"></i></div>
+                    <h3 class="skill-title">Backend & Lenguajes</h3>
+                    <ul class="skill-list">
+                        <li>Java & Spring Boot / Cloud</li>
+                        <li>Python (Certificación PCEPT™)</li>
+                        <li>Spring Security (OAuth 2.0, 2FA)</li>
+                        <li>REST APIs & Microservicios</li>
+                        <li>JPA / Hibernate & Jakarta EE</li>
+                    </ul>
+                </div>
 
-                <!-- Frontend -->
                 <div class="skill-card">
                     <div class="skill-icon"><i data-lucide="layout"></i></div>
                     <h3 class="skill-title">Frontend & Web</h3>
@@ -152,7 +188,6 @@
                     </ul>
                 </div>
 
-                <!-- Bases de Datos & Cloud -->
                 <div class="skill-card">
                     <div class="skill-icon"><i data-lucide="database"></i></div>
                     <h3 class="skill-title">Bases de Datos & Cloud</h3>
@@ -164,22 +199,20 @@
                     </ul>
                 </div>
 
-<!-- Herramientas & DevOps -->
-<div class="skill-card">
-    <div class="skill-icon"><i data-lucide="wrench"></i></div>
-    <h3 class="skill-title">DevOps & Build Tools</h3>
-    <ul class="skill-list">
-        <li>Gradle (Groovy DSL) & Maven</li>
-        <li>Kubernetes & Docker</li>
-        <li>Git & GitHub Copilot</li>
-        <li>Jira (Agile/Scrum) & Asana</li>
-        <li>Camunda (BPMN 2.0)</li>
-    </ul>
-</div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i data-lucide="wrench"></i></div>
+                    <h3 class="skill-title">DevOps & Herramientas</h3>
+                    <ul class="skill-list">
+                        <li>Gradle (Groovy DSL) & Maven</li>
+                        <li>Git & GitHub Copilot</li>
+                        <li>Jira (Agile/Scrum) & Asana</li>
+                        <li>Camunda (BPMN 2.0)</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Experiencia & Trayectoria -->
+        <!-- Experiencia Section -->
         <section id="experiencia" class="section">
             <div class="section-header">
                 <h2 class="section-title">Experiencia & Educación</h2>
@@ -267,9 +300,9 @@
                 <p class="section-subtitle">Estoy disponible para nuevas oportunidades como Desarrollador Full Stack Jr.</p>
 
                 <div class="contact-actions">
-                    <a href="mailto:adrianteeeen@gmail.com" class="btn btn-primary">
-                        <i data-lucide="mail"></i> adrianteeeen@gmail.com
-                    </a>
+                    <button class="btn btn-primary" onclick="copyEmail(this)">
+                        <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
+                    </button>
                     <a href="tel:+34629968807" class="btn btn-secondary">
                         <i data-lucide="phone"></i> 629 96 88 07
                     </a>
@@ -292,7 +325,9 @@
         </div>
     </footer>
 
-    <!-- Inicializar Lucide Icons -->
+    <!-- Scripts del Proyecto -->
+    <script src="canvas-bg.js"></script>
+    <script src="main.js"></script>
     <script>
         lucide.createIcons();
     </script>
