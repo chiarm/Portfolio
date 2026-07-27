@@ -648,23 +648,24 @@ html, body, a, button, input {
 }
 
 /* ==========================================
-   TERMINAL INTERACTIVA
+   TERMINAL INTERACTIVA (VERSIÓN CORREGIDA)
    ========================================== */
 .terminal-container {
   width: 100%;
-  max-width: 42rem;
-  margin-top: 2.5rem;
-  background: rgba(2, 6, 23, 0.9);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  border-radius: 0.75rem;
+  max-width: 650px;
+  margin: 2rem auto 0 auto;
+  background: rgba(2, 6, 23, 0.95) !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(99, 102, 241, 0.2);
-  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(99, 102, 241, 0.25);
+  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  text-align: left;
 }
 
 .terminal-header {
-  background: rgba(15, 23, 42, 0.8);
-  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -672,35 +673,40 @@ html, body, a, button, input {
 
 .terminal-buttons {
   display: flex;
-  gap: 0.4rem;
+  gap: 6px;
 }
 
 .btn-dot {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
+  display: inline-block;
 }
 .btn-dot.red { background: #ef4444; }
 .btn-dot.yellow { background: #f59e0b; }
 .btn-dot.green { background: #10b981; }
 
 .terminal-title {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   font-size: 0.75rem;
   color: #94a3b8;
+  font-family: monospace;
 }
 
 .terminal-body {
-  padding: 1rem;
-  max-height: 180px;
+  padding: 14px;
+  height: 160px;
+  max-height: 160px;
   overflow-y: auto;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: #e2e8f0;
+  line-height: 1.5;
 }
 
 .term-line {
-  margin-bottom: 0.4rem;
+  margin: 0 0 6px 0;
+  padding: 0;
+  word-break: break-word;
 }
 
 .highlight {
@@ -711,25 +717,29 @@ html, body, a, button, input {
 .terminal-input-line {
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background: rgba(15, 23, 42, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .prompt {
   color: #818cf8;
   font-weight: bold;
-  margin-right: 0.5rem;
+  margin-right: 8px;
+  font-family: monospace;
 }
 
 #terminal-input {
-  background: transparent;
-  border: none;
-  color: #38bdf8;
-  font-family: inherit;
-  font-size: 0.875rem;
+  background: transparent !important;
+  border: none !important;
+  color: #38bdf8 !important;
+  font-family: 'Consolas', 'Courier New', Courier, monospace !important;
+  font-size: 0.85rem !important;
   width: 100%;
-  outline: none;
+  outline: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 /* ==========================================
