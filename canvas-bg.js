@@ -63,7 +63,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#818cf8';
+        ctx.fillStyle = '#f5c2e7'; // Verde acento
         ctx.fill();
     }
 }
@@ -88,7 +88,7 @@ function connectParticles() {
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(99, 102, 241, ${opacity * 0.25})`;
+                ctx.strokeStyle = `rgba(116, 199, 187, ${opacity * 0.25})`; // Verde 500
                 ctx.lineWidth = 1;
                 ctx.stroke();
             }
@@ -137,3 +137,30 @@ if (savedBgPref === 'false') {
 } else {
     animate();
 }
+// Agrega esta función a tu canvas-bg.js existente para soportar el cambio dinámico de color:
+let nodeColor = '#f5c2e7';
+let lineColor = '116, 199, 187';
+
+// Ajuste de tonos para alta visibilidad y dinamismo según el modo
+function updateCanvasTheme(theme) {
+    if (theme === 'light') {
+        // Verde bosque brillante y opacidad equilibrada para fondo claro
+        nodeColor = '#510da0';       
+        lineColor = '81, 13, 160';
+    } else {
+        // Verde neón brillante para modo oscuro
+        nodeColor = '#f5c2e7';       
+        lineColor = '116, 199, 187';
+    }
+}
+
+// Sincronizar tema inicial del canvas
+if (localStorage.getItem('theme') === 'light') {
+    updateCanvasTheme('light');
+}
+
+// En la función draw() de Particle dentro de canvas-bg.js, usa nodeColor:
+// ctx.fillStyle = nodeColor;
+
+// En connectParticles(), usa lineColor:
+// ctx.strokeStyle = `rgba(${lineColor}, ${opacity * 0.25})`;

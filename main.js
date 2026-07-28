@@ -13,23 +13,24 @@ if (cursor && cursorBlur) {
         cursorBlur.style.top = `${e.clientY}px`;
     });
 
-    const interactiveElements = document.querySelectorAll('a, button, input, .project-card, .skill-card');
+    const interactiveElements = document.querySelectorAll('a, button, input, .project-card, .skill-card, .bg-toggle-btn, .theme-toggle-btn');
 
     interactiveElements.forEach((el) => {
         el.addEventListener('mouseenter', () => {
+            const isLight = localStorage.getItem('theme') === 'light';
             cursor.style.width = '20px';
             cursor.style.height = '20px';
-            cursor.style.backgroundColor = '#818cf8';
+            cursor.style.backgroundColor = isLight ? '#510da0' : '#f5c2e7';
         });
 
         el.addEventListener('mouseleave', () => {
+            const isLight = localStorage.getItem('theme') === 'light';
             cursor.style.width = '10px';
             cursor.style.height = '10px';
-            cursor.style.backgroundColor = '#38bdf8';
+            cursor.style.backgroundColor = isLight ? '#400a7f' : '#94e2d5';
         });
     });
 }
-
 /* ==========================================
    2. BOTÓN DE CONTROL DEL FONDO CANVAS
    ========================================== */
@@ -75,8 +76,9 @@ function copyEmail(button) {
             button.innerText = "¡Email Copiado!";
         }
         
-        button.style.borderColor = "#34d399";
-        button.style.color = "#34d399";
+        button.style.borderColor = "#94e2d5";
+        button.style.color = "#000000";             // <- Texto en negro
+        button.style.backgroundColor = "#94e2d5";
 
         setTimeout(() => {
             if (copyTextElement) {

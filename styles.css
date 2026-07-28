@@ -2,18 +2,33 @@
    VARIABLES Y ESTILOS GLOBALES
    ========================================== */
 :root {
-  --bg-primary: #0f172a;      /* slate-900 */
-  --bg-secondary: #1e293b;    /* slate-800 */
-  --bg-darker: #020617;       /* slate-950 */
-  --text-primary: #f8fafc;    /* slate-50 */
-  --text-muted: #94a3b8;      /* slate-400 */
-  --border-color: #334155;    /* slate-700 */
+  /* Paleta de Verdes */
+  --green-50:  #f5f5fb;
+  --green-100: #e0dcf7;
+  --green-200: #cba6f7;
+  --green-300: #f5c2e7;
+  --green-400: #94e2d5;
+  --green-500: #74c7bb;
+  --green-600: #569a91;
+  --green-700: #3f746d;
+  --green-800: #2c524d;
+  --green-900: #1d3733;
+  --green-950: #101f1d;
+
+  /* Esquema del sitio */
+  --bg-primary: #1e1e2e;         /* Fondo muy oscuro derivado de verde 950 */
+  --bg-secondary: #181825;       /* Capas secundarias oscuras */
+  --bg-darker: #11111b;          /* Footer y fondos profundos */
   
-  --accent-primary: #6366f1;  /* indigo-500 */
-  --accent-hover: #4f46e5;    /* indigo-600 */
-  --accent-light: #818cf8;    /* indigo-400 */
-  --accent-bg: rgba(99, 102, 241, 0.1);
-  --accent-border: rgba(99, 102, 241, 0.3);
+  --text-primary: var(--green-50);
+  --text-muted: #a6adc8;        /* Verde grisáceo sobrio para párrafos */
+  --border-color: rgba(63, 116, 109, 0.35);
+  
+  --accent-primary: var(--green-600);
+  --accent-hover: var(--green-500);
+  --accent-light: var(--green-300);
+  --accent-bg: rgba(116, 199, 187, 0.1);
+  --accent-border: rgba(148, 226, 213, 0.3);
   
   --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --max-width: 1150px;
@@ -41,8 +56,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--accent-primary);
-  color: #ffffff;
+  background-color: var(--green-500);
+  color: #000000;
 }
 
 a {
@@ -65,7 +80,7 @@ a {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.75;
   transition: opacity 0.5s ease;
 }
 
@@ -78,9 +93,9 @@ a {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(30, 30, 46, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
 }
@@ -98,7 +113,7 @@ a {
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #818cf8, #38bdf8);
+  background: linear-gradient(135deg, var(--green-300), var(--green-100));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -117,7 +132,7 @@ a {
 }
 
 .nav-link:hover {
-  color: var(--accent-light);
+  color: var(--green-300);
 }
 
 .header-actions {
@@ -134,9 +149,9 @@ a {
   padding: 0.55rem 0.85rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #38bdf8;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--green-300);
+  background: rgba(24, 24, 37, 0.6);
+  border: 1px solid rgba(245, 194, 231, 0.3);
   border-radius: 0.5rem;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -144,21 +159,16 @@ a {
 }
 
 .bg-toggle-btn:hover {
-  background: rgba(30, 41, 59, 0.9);
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  background: rgba(63, 116, 109, 0.3);
+  border-color: var(--green-300);
+  box-shadow: 0 0 12px rgba(148, 226, 213, 0.25);
 }
 
 .bg-toggle-btn.disabled {
   color: var(--text-muted);
-  border-color: rgba(148, 163, 184, 0.25);
+  border-color: rgba(166, 173, 200, 0.2);
   background: transparent;
   opacity: 0.75;
-}
-
-.bg-toggle-btn.disabled:hover {
-  opacity: 1;
-  border-color: var(--text-muted);
 }
 
 /* ==========================================
@@ -171,7 +181,7 @@ a {
   gap: 0.5rem;
   padding: 0.6rem 1.25rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 0.5rem;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -179,25 +189,27 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--accent-hover);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  background-color: var(--green-600);
+  color: #101f1d;
+  box-shadow: 0 4px 14px rgba(116, 199, 187, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-primary);
+  background-color: var(--green-400);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(148, 226, 213, 0.4);
 }
 
 .btn-secondary {
-  background-color: rgba(30, 41, 59, 0.6);
+  background-color: rgba(24, 24, 37, 0.7);
   border: 1px solid var(--border-color);
-  color: var(--text-primary);
+  color: var(--green-50);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-muted);
+  border-color: var(--green-400);
   background-color: var(--bg-secondary);
+  color: #fff;
 }
 
 /* ==========================================
@@ -210,7 +222,7 @@ main {
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 4.5rem 1.5rem;
   border-top: 1px solid var(--border-color);
 }
 
@@ -231,45 +243,50 @@ main {
 }
 
 /* ==========================================
-   HERO SECTION
+   HERO SECTION (CENTRADO)
    ========================================== */
 .hero-section {
   border-top: none;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   background-color: var(--accent-bg);
   border: 1px solid var(--accent-border);
-  color: var(--accent-light);
+  color: var(--green-200);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .badge-dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background-color: #34d399;
+  background-color: var(--green-400);
+  box-shadow: 0 0 8px var(--green-400);
 }
 
 .hero-title {
-  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   max-width: 48rem;
+  background: linear-gradient(180deg, #ffffff 0%, var(--green-100) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-description {
@@ -278,59 +295,22 @@ main {
   color: var(--text-muted);
   max-width: 42rem;
   line-height: 1.7;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-description strong {
+  color: var(--green-200);
 }
 
 .hero-actions {
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   width: 100%;
-}
-
-/* ==========================================
-   ESTADÍSTICAS HI-TECH
-   ========================================== */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.25rem;
-  width: 100%;
-  max-width: 680px;
-  margin: 2.5rem 0 0 0;
-}
-
-.stat-card {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: 0.75rem;
-  padding: 1.25rem 0.75rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  border-color: #38bdf8;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-  transform: translateY(-2px);
-}
-
-.stat-number {
-  display: block;
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #38bdf8;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 0.25rem;
 }
 
 /* ==========================================
@@ -343,10 +323,10 @@ main {
 }
 
 .project-card {
-  background: rgba(15, 23, 42, 0.65) !important;
+  background: rgba(16, 31, 29, 0.4) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border: 1px solid rgba(63, 116, 109, 0.4) !important;
   border-radius: 0.75rem;
   overflow: hidden;
   display: flex;
@@ -357,10 +337,10 @@ main {
 }
 
 .project-card:hover {
-  border-color: rgba(129, 140, 248, 0.7) !important;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5),
-              0 0 15px rgba(56, 189, 248, 0.2);
+  border-color: rgba(148, 226, 213, 0.6) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(116, 199, 187, 0.25),
+              0 0 15px rgba(148, 226, 213, 0.15);
 }
 
 .project-card::before {
@@ -370,7 +350,7 @@ main {
   left: 0;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, #6366f1, #38bdf8);
+  background: linear-gradient(90deg, var(--green-500), var(--green-200));
   transition: width 0.4s ease;
 }
 
@@ -379,12 +359,12 @@ main {
 }
 
 .project-preview {
-  height: 10rem;
-  background: rgba(2, 6, 23, 0.8) !important;
-  color: #38bdf8 !important;
+  height: 9.5rem;
+  background: rgba(17, 17, 27, 0.8) !important;
+  color: var(--green-300) !important;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+  text-shadow: 0 0 8px rgba(245, 194, 231, 0.4);
+  border-bottom: 1px solid rgba(63, 116, 109, 0.4) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,6 +391,7 @@ main {
 .project-title {
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--green-50);
 }
 
 .project-links {
@@ -424,7 +405,7 @@ main {
 }
 
 .project-links a:hover {
-  color: var(--text-primary);
+  color: var(--green-300);
 }
 
 .project-desc {
@@ -437,16 +418,16 @@ main {
 .project-techs {
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid rgba(51, 65, 85, 0.5);
+  border-top: 1px solid rgba(63, 116, 109, 0.3);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .tech-tag {
-  background: rgba(99, 102, 241, 0.1) !important;
-  color: #a5b4fc !important;
-  border: 1px solid rgba(129, 140, 248, 0.3) !important;
+  background: rgba(116, 199, 187, 0.08) !important;
+  color: var(--green-200) !important;
+  border: 1px solid rgba(148, 226, 213, 0.25) !important;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.25rem 0.6rem;
@@ -455,9 +436,9 @@ main {
 }
 
 .project-card:hover .tech-tag {
-  border-color: rgba(56, 189, 248, 0.5) !important;
-  color: #38bdf8 !important;
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+  border-color: var(--green-400) !important;
+  color: var(--green-100) !important;
+  box-shadow: 0 0 8px rgba(148, 226, 213, 0.2);
 }
 
 /* ==========================================
@@ -470,41 +451,39 @@ main {
 }
 
 .skill-card {
-  background: rgba(15, 23, 42, 0.5) !important;
+  background: rgba(16, 31, 29, 0.3) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(63, 116, 109, 0.3) !important;
   border-radius: 0.75rem;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .skill-card:hover {
-  border-color: rgba(99, 102, 241, 0.5) !important;
+  border-color: rgba(148, 226, 213, 0.5) !important;
   transform: translateY(-3px);
-  background: rgba(30, 41, 59, 0.6) !important;
-  box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.3);
+  background: rgba(24, 24, 37, 0.6) !important;
+  box-shadow: 0 8px 25px -5px rgba(116, 199, 187, 0.2);
 }
 
 .skill-icon {
   width: 2.5rem;
   height: 2.5rem;
-  background: rgba(99, 102, 241, 0.15) !important;
-  border: 1px solid rgba(129, 140, 248, 0.4) !important;
+  background: rgba(116, 199, 187, 0.1) !important;
+  border: 1px solid rgba(148, 226, 213, 0.3) !important;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #38bdf8 !important;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+  color: var(--green-300) !important;
+  box-shadow: 0 0 10px rgba(116, 199, 187, 0.15);
   margin-bottom: 1rem;
   transition: all 0.3s ease;
 }
 
 .skill-card:hover .skill-icon {
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 15px rgba(148, 226, 213, 0.4);
   transform: scale(1.05);
 }
 
@@ -512,6 +491,7 @@ main {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  color: var(--green-50);
 }
 
 .skill-list {
@@ -539,9 +519,13 @@ main {
   line-height: 1.7;
 }
 
+.about-text strong {
+  color: var(--green-200);
+}
+
 .about-box {
   padding: 1.5rem;
-  background-color: rgba(30, 41, 59, 0.4);
+  background-color: rgba(16, 31, 29, 0.3);
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
 }
@@ -553,7 +537,7 @@ main {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-primary);
+  color: var(--green-100);
 }
 
 .philosophy-list {
@@ -572,7 +556,7 @@ main {
 }
 
 .bullet {
-  color: var(--accent-light);
+  color: var(--green-300);
   font-weight: bold;
 }
 
@@ -621,7 +605,7 @@ main {
 }
 
 .footer-links a:hover {
-  color: var(--text-primary);
+  color: var(--green-300);
 }
 
 /* ==========================================
@@ -633,13 +617,13 @@ main {
   left: 0;
   width: 10px;
   height: 10px;
-  background-color: #38bdf8;
+  background-color: var(--green-400);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background-color 0.2s;
-  box-shadow: 0 0 10px #38bdf8;
+  box-shadow: 0 0 10px var(--green-400);
 }
 
 #cursor-blur {
@@ -648,7 +632,7 @@ main {
   left: 0;
   width: 35px;
   height: 35px;
-  background: rgba(99, 102, 241, 0.35);
+  background: rgba(116, 199, 187, 0.35);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -684,12 +668,6 @@ main {
   }
 }
 
-@media (min-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 767px) {
   .nav-menu {
     display: none;
@@ -706,4 +684,530 @@ main {
   .bg-toggle-btn span {
     display: none;
   }
+}
+
+/* ==========================================
+   MEJORA DE TIPOGRAFÍA Y LEGIBILIDAD
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --text-primary: #cdd6f4;
+  --text-muted: #a6adc8;
+  --green-highlight: #f5c2e7;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #1e1e2e;
+  color: var(--text-primary);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+
+p, .hero-description, .project-desc, .section-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 65ch;
+}
+
+code, .terminal-title, .project-preview code {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+}
+
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  border-color: var(--green-500, #74c7bb);
+}
+
+.hero-centered {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+
+.hero-centered .hero-description {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 58ch;
+}
+/* ==========================================
+   ANIMACIONES Y EFECTOS PARA SOBRE MÍ / EXPERIENCIA
+   ========================================== */
+
+/* 1. Transición general y hover en la tarjeta */
+.about-box {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s ease, 
+              border-color 0.3s ease;
+}
+
+.about-box:hover {
+  transform: translateY(-5px);
+  border-color: rgba(148, 226, 213, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(116, 199, 187, 0.25),
+              0 0 15px rgba(148, 226, 213, 0.15);
+}
+
+/* 2. Línea neón superior desplegable al hacer hover */
+.about-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green-500), var(--green-200));
+  transition: width 0.4s ease;
+}
+
+.about-box:hover::before {
+  width: 100%;
+}
+
+/* 3. Animación en el icono del título */
+.about-box-title i,
+.about-box-title svg {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.about-box:hover .about-box-title i,
+.about-box:hover .about-box-title svg {
+  transform: scale(1.15) rotate(-6deg);
+  color: var(--green-300);
+}
+
+/* 4. Interacción item por item en las listas */
+.philosophy-list li {
+  padding: 0.25rem 0.4rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.philosophy-list li:hover {
+  background: rgba(116, 199, 187, 0.08);
+  transform: translateX(6px);
+}
+
+.philosophy-list li .bullet {
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.philosophy-list li:hover .bullet {
+  transform: scale(1.4);
+  color: var(--green-300);
+}
+
+.philosophy-list li strong {
+  transition: color 0.2s ease;
+}
+
+.philosophy-list li:hover strong {
+  color: var(--green-100);
+}
+/* ==========================================
+   INTERACTIVIDAD Y ANIMACIONES PARA PROYECTOS
+   ========================================== */
+
+/* 1. Elevación y profundidad de la tarjeta */
+.project-card {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(148, 226, 213, 0.6) !important;
+  box-shadow: 0 12px 35px -10px rgba(116, 199, 187, 0.3),
+              0 0 20px rgba(148, 226, 213, 0.15);
+}
+
+/* 2. Efecto en la cabecera/preview (consola) */
+.project-preview {
+  transition: background-color 0.3s ease, color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.project-card:hover .project-preview {
+  background: rgba(30, 30, 46, 0.9) !important;
+  color: var(--green-200) !important;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 12px rgba(245, 194, 231, 0.6);
+}
+
+/* 3. Animación en el título e iconos de enlaces externos */
+.project-title {
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-title {
+  color: var(--green-300);
+}
+
+.project-links a {
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.project-links a:hover {
+  transform: scale(1.25) rotate(5deg);
+  color: var(--green-300) !important;
+}
+
+/* 4. Interacción dinámica en las etiquetas técnicas (badges) */
+.tech-tag {
+  display: inline-block;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover individual en cada tecnología */
+.tech-tag:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(148, 226, 213, 0.2) !important;
+  border-color: var(--green-300) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(148, 226, 213, 0.4);
+}
+/* ==========================================
+   COMPETENCIAS TÉCNICAS: TEMA OSCURO
+   ========================================== */
+
+/* 1. Elevación e iluminación de bordes completos */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(63, 116, 109, 0.35) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+}
+
+/* Ocultar / Desactivar la cortinilla superior */
+.skill-card::before {
+  display: none !important;
+}
+
+/* Hover: El borde completo se ilumina en verde con resplandor neón */
+.skill-card:hover {
+  transform: translateY(-5px);
+  background: rgba(24, 24, 37, 0.75) !important;
+  border-color: var(--green-400) !important; /* Borde verde completo */
+  box-shadow: 0 0 20px rgba(148, 226, 213, 0.25),
+              inset 0 0 10px rgba(148, 226, 213, 0.1);
+}
+
+/* 2. Animación e iluminación del Icono */
+.skill-icon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              background-color 0.3s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.1) rotate(-5deg);
+  background: rgba(116, 199, 187, 0.18) !important;
+  border-color: var(--green-400) !important;
+  box-shadow: 0 0 15px rgba(148, 226, 213, 0.4);
+  color: #ffffff !important;
+}
+
+/* 3. Título de la tarjeta */
+.skill-title {
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover .skill-title {
+  color: var(--green-200);
+}
+
+/* 4. Lista de Skills interactiva */
+.skill-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+  cursor: default;
+}
+
+.skill-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-list li:hover {
+  transform: translateX(5px);
+  color: var(--green-100) !important;
+}
+
+.skill-list li:hover::before {
+  background-color: var(--green-400);
+  transform: translateY(-50%) scale(1.4);
+  box-shadow: 0 0 8px var(--green-400);
+}
+/* ==========================================
+   UNIFICACIÓN EXACTA DE TAMAÑOS (MODO DÍA Y NOCHE)
+   ========================================== */
+
+/* 1. SECCIÓN SOBRE MÍ / EXPERIENCIA */
+.about-box-title {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 1rem !important;
+}
+
+.philosophy-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.philosophy-list li {
+  font-size: 0.925rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  padding: 0.25rem 0.4rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* 2. TARJETAS DE COMPETENCIAS TÉCNICAS */
+.skill-card {
+  padding: 1.5rem !important;
+  border-radius: 0.85rem !important;
+  border: 1px solid #cba6f7 !important; /* Mismo grosor de borde que el modo oscuro */
+}
+
+.skill-icon {
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  border-radius: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 1rem !important;
+}
+
+.skill-title {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+.skill-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.skill-list li {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  padding-left: 1.1rem !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.skill-list li::before {
+  width: 5px !important;
+  height: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* 3. TARJETAS DE PROYECTOS */
+.project-card {
+  border-radius: 0.85rem !important;
+  border: 1px solid #cba6f7 !important;
+}
+
+.project-preview {
+  padding: 1rem 1.25rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+.project-title {
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.project-description {
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  margin-bottom: 1rem !important;
+}
+
+.tech-tag {
+  font-size: 0.775rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  padding: 0.25rem 0.65rem !important;
+  border-radius: 0.375rem !important;
+}
+
+/* 4. ENCABEZADOS GENERALES */
+.section-title {
+  font-size: 1.85rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.section-subtitle {
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+/* ==========================================
+   UNIFICACIÓN DE FUENTE, TAMAÑO Y NEGRITA (HERO)
+   ========================================== */
+
+/* 1. "Buscando oportunidad..." (Fuente en negrita/bold) */
+.hero-section .badge,
+.hero-centered .badge {
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif) !important;
+  font-size: 0.85rem !important;
+  font-weight: 800 !important; /* Negrita pesada (Bold) */
+  line-height: 1 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+/* 2. "Adrián Ramos Márquez" (Fuente en negrita/bold y tamaño unificado) */
+.hero-section .hero-title,
+.hero-centered .hero-title {
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif) !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important; /* Tamaño idéntico al contenido */
+  font-weight: 800 !important; /* Negrita pesada (Bold) */
+  line-height: 1.2 !important;
+  max-width: 52rem !important;
+  margin: 0 auto !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* 3. Contenido Descriptivo (Misma fuente, tamaño exacto al título) */
+.hero-section .hero-description,
+.hero-centered .hero-description {
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif) !important;
+  font-size: clamp(1.75rem, 4vw, 2.5rem) !important; /* Mismo tamaño exacto que .hero-title */
+  font-weight: 400 !important; /* Peso regular para diferenciar lectura si se desea, o 700/800 para negrita */
+  line-height: 1.35 !important;
+  max-width: 52rem !important;
+  margin-top: 1.25rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Destacados internos dentro del texto */
+.hero-description strong {
+  font-weight: 800 !important;
+}
+/* ==========================================
+   AJUSTE DE TAMAÑO EN MODO OSCURO (HERO DESCRIPTION)
+   ========================================== */
+
+/* Unifica la escala del párrafo descriptivo en el modo oscuro */
+.hero-section .hero-description,
+.hero-centered .hero-description {
+  font-family: var(--font-main, 'Inter', system-ui, sans-serif) !important;
+  font-size: clamp(1.05rem, 2vw, 1.2rem) !important; /* Mismo tamaño proporcionado */
+  font-weight: 600 !important; /* Grosor y cuerpo idénticos al modo claro */
+  line-height: 1.6 !important;
+  max-width: 48rem !important;
+  margin-top: 1.25rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  color: var(--text-muted) !important; /* Mantener el color texto del tema oscuro */
+}
+
+/* Destacados en negrita pesada dentro del texto oscuro */
+.hero-description strong {
+  font-weight: 800 !important;
+  color: var(--green-200) !important;
+}
+html {
+  scroll-behavior: smooth !important;
+}
+
+html {
+  /* ESTO ES VITAL: Apaga el smooth nativo para que Lenis no dé tirones */
+  scroll-behavior: auto !important; 
+}
+
+/* Optimización para que la tarjeta gráfica (GPU) ayude a renderizar el scroll */
+body {
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+/* Forzar aceleración por hardware en la capa de scroll */
+html.lenis, html.lenis body {
+  overscroll-behavior: none;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Evitar que el fondo animado o los blurs consuman recursos durante el movimiento */
+html.lenis-scrolling * {
+  pointer-events: none; /* Desactiva eventos de ratón mientras se hace scroll para ganar fluidez */
 }

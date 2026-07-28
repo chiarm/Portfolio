@@ -7,7 +7,7 @@
     <!-- Favicon Ciberpunk -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐀</text></svg>">
     <!-- Estilos CSS externos -->
-    <link rel="stylesheet" href="styles.css">
+    <link id="theme-stylesheet" rel="stylesheet" href="styles.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -34,7 +34,7 @@
             </nav>
             <div class="header-actions">
                 <a href="AdrianRamosMarquez.pdf" download class="btn btn-primary">
-                    <i data-lucide="download"></i> Descargar CV
+                    <i data-lucide="download"></i> CV
                 </a>
                 <!-- Botón de Control del Fondo a la derecha del CV -->
                 <button id="toggle-bg-btn" class="bg-toggle-btn" title="Activar/Desactivar fondo animado">
@@ -46,29 +46,29 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="section hero-section">
-            <div class="badge">
-                <span class="badge-dot"></span>
-                Buscando oportunidad como Desarrollador Full Stack
-            </div>
-            <h1 class="hero-title">Adrián Ramos Márquez</h1>
-            <p class="hero-description">
-                Desarrollador Full Stack Jr. especializado en el ecosistema <strong>Java / Spring Boot</strong> y <strong>Angular</strong>. Certificado oficialmente en Python (PCEPT™) y enfocado en arquitecturas de microservicios, bases de datos SQL/NoSQL y despliegue con Kubernetes.
-            </p>
-            
-            <div class="hero-actions">
-                <a href="#proyectos" class="btn btn-primary">
-                    Ver proyectos <i data-lucide="arrow-right"></i>
-                </a>
-                <a href="AdrianRamosMarquez.pdf" download class="btn btn-secondary">
-                    <i data-lucide="download"></i> Descargar CV
-                </a>
-                <button class="btn btn-primary" onclick="copyEmail(this)">
-                    <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
-                </button>
-            </div>
-        </section>
+        <!-- Hero Section (Centrado) -->
+<section class="section hero-section hero-centered">
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Buscando oportunidad como Desarrollador Full Stack
+    </div>
+    <h1 class="hero-title">Adrián Ramos Márquez</h1>
+    <h2 class="hero-description">
+        Desarrollador Full Stack Jr. especializado en el ecosistema <strong>Java / Spring Boot</strong> y <strong>Angular</strong>. Certificado oficialmente en Python (PCEPT™) y enfocado en arquitecturas de microservicios, bases de datos SQL/NoSQL y despliegue con Kubernetes.
+    </h2>
+    
+    <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-primary">
+            Ver proyectos <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="AdrianRamosMarquez.pdf" download class="btn btn-secondary">
+            <i data-lucide="download"></i> Descargar CV
+        </a>
+        <button class="btn btn-primary" onclick="copyEmail(this)">
+            <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
+        </button>
+    </div>
+</section>
 
         <!-- Proyectos Section -->
         <section id="proyectos" class="section">
@@ -177,59 +177,59 @@
                     <ul class="skill-list">
                         <li>Gradle (Groovy DSL) & Maven</li>
                         <li>Git & GitHub Copilot</li>
-                        <li>Jira (Agile/Scrum) & Asana</li>
                         <li>Camunda (BPMN 2.0)</li>
+						<li>Jira (Agile/Scrum) & Asana</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Experiencia Section -->
-        <section id="experiencia" class="section">
-            <div class="section-header">
-                <h2 class="section-title">Experiencia & Educación</h2>
-                <p class="section-subtitle">Mi trayectoria formativa y habilidades transversales comprobadas.</p>
+<!-- Experiencia Section -->
+<section id="experiencia" class="section">
+    <div class="section-header">
+        <h2 class="section-title">Experiencia & Educación</h2>
+        <p class="section-subtitle">Mi trayectoria formativa y habilidades transversales comprobadas.</p>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-text">
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Educación Principal</h3>
+            <div style="margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--accent-light, var(--border-color));">
+                <h4 style="font-size: 1.05rem;">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">En fase de finalización — Especialización en Desarrollo Móvil, Programación de Servicios y Procesos, Interfaces y Sistemas de Gestión Empresarial.</p>
             </div>
 
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #fff;">Educación Principal</h3>
-                    <div style="margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--accent-light);">
-                        <h4 style="color: #fff; font-size: 1.05rem;">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
-                        <p style="font-size: 0.875rem; color: var(--text-muted);">En fase de finalización — Especialización en Desarrollo Móvil, Programación de Servicios y Procesos, Interfaces y Sistemas de Gestión Empresarial.</p>
-                    </div>
-
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #fff; margin-top: 2rem;">Certificación Oficial</h3>
-                    <div style="padding-left: 1rem; border-left: 2px solid var(--accent-light);">
-                        <h4 style="color: #fff; font-size: 1.05rem;">Certified Entry-Level Python Programmer (PCEPT™)</h4>
-                        <p style="font-size: 0.875rem; color: var(--text-muted);">Python Institute — Certificación oficial que avala fundamentos de programación estructurada, sintaxis y manipulación de datos en Python.</p>
-                    </div>
-                </div>
-
-                <div class="about-box">
-                    <h3 class="about-box-title">
-                        <i data-lucide="briefcase"></i> +4 años de Experiencia Laboral
-                    </h3>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
-                        <strong>Atención al Cliente y Hostelería (Restaurante Malahierba)</strong>
-                    </p>
-                    <ul class="philosophy-list">
-                        <li>
-                            <span class="bullet">•</span>
-                            <span><strong>Trabajo bajo presión:</strong> Coordinación de tareas en entornos de alto ritmo, priorizando demandas operativas.</span>
-                        </li>
-                        <li>
-                            <span class="bullet">•</span>
-                            <span><strong>Trabajo en equipo y comunicación:</strong> Colaboración constante en entornos multidisciplinares para asegurar flujo y calidad.</span>
-                        </li>
-                        <li>
-                            <span class="bullet">•</span>
-                            <span><strong>Resolución de incidencias:</strong> Capacidad de respuesta rápida ante imprevistos con profesionalidad y dinamismo.</span>
-                        </li>
-                    </ul>
-                </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem;">Certificación Oficial</h3>
+            <div style="padding-left: 1rem; border-left: 2px solid var(--accent-light, var(--border-color));">
+                <h4 style="font-size: 1.05rem;">Certified Entry-Level Python Programmer (PCEPT™)</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Python Institute — Certificación oficial que avala fundamentos de programación estructurada, sintaxis y manipulación de datos en Python.</p>
             </div>
-        </section>
+        </div>
+
+        <div class="about-box">
+            <h3 class="about-box-title">
+                <i data-lucide="briefcase"></i> +4 años de Experiencia Laboral
+            </h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <strong>Atención al Cliente y Hostelería (Restaurante Malahierba)</strong>
+            </p>
+            <ul class="philosophy-list">
+                <li>
+                    <span class="bullet">•</span>
+                    <span><strong>Trabajo bajo presión:</strong> Coordinación de tareas en entornos de alto ritmo, priorizando demandas operativas.</span>
+                </li>
+                <li>
+                    <span class="bullet">•</span>
+                    <span><strong>Trabajo en equipo y comunicación:</strong> Colaboración constante en entornos multidisciplinares para asegurar flujo y calidad.</span>
+                </li>
+                <li>
+                    <span class="bullet">•</span>
+                    <span><strong>Resolución de incidencias:</strong> Capacidad de respuesta rápida ante imprevistos con profesionalidad y dinamismo.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 
         <!-- Sobre Mí Section -->
         <section id="sobre-mi" class="section">
@@ -297,11 +297,19 @@
         </div>
     </footer>
 
+    <!-- Botón flotante cambio de tema -->
+    <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <span id="theme-icon">🌞</span>
+    </button>
+	<!-- Librería Lenis (CDN) -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <!-- Scripts del Proyecto -->
-    <script src="canvas-bg.js"></script>
-    <script src="main.js"></script>
     <script>
         lucide.createIcons();
     </script>
+    <script src="canvas-bg.js"></script>
+    <script src="theme-toggle.js"></script>
+	<script src="smooth-scroll.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
