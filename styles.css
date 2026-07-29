@@ -1283,6 +1283,10 @@ html.lenis-scrolling * {
     grid-template-columns: 1fr;
   }
 
+  .scroll-indicator {
+    display: none;
+  }
+
   .hero-section {
     padding-top: 3rem;
     padding-bottom: 4rem;
