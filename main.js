@@ -1,153 +1,130 @@
-/* ==========================================
-   1. CURSOR NEÓN PERSONALIZADO FLUIDO
-   ========================================== */
-const cursor = document.getElementById('custom-cursor');
-const cursorBlur = document.getElementById('cursor-blur');
+(function () {
+  /* CURSOR */
+  const cursor = document.getElementById('custom-cursor');
+  const cursorBlur = document.getElementById('cursor-blur');
 
-if (cursor && cursorBlur) {
+  if (cursor && cursorBlur) {
     document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-        
-        cursorBlur.style.left = `${e.clientX}px`;
-        cursorBlur.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      cursorBlur.style.left = `${e.clientX}px`;
+      cursorBlur.style.top = `${e.clientY}px`;
     });
 
-    const interactiveElements = document.querySelectorAll('a, button, input, .project-card, .skill-card, .bg-toggle-btn, .theme-toggle-btn');
+    document.addEventListener('mouseenter', (e) => {
+      const target = e.target;
+      const isInteractive = target.matches('a, button, input, .project-card, .skill-card, .bg-toggle-btn, .theme-toggle-btn') ||
+        target.closest('a, button, .project-card, .skill-card');
 
-    interactiveElements.forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-            const isLight = localStorage.getItem('theme') === 'light';
-            cursor.style.width = '20px';
-            cursor.style.height = '20px';
-            cursor.style.backgroundColor = isLight ? '#510da0' : '#f5c2e7';
-        });
+      if (isInteractive) {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        cursor.style.backgroundColor = isLight ? '#510da0' : '#f5c2e7';
+      }
+    }, true);
 
-        el.addEventListener('mouseleave', () => {
-            const isLight = localStorage.getItem('theme') === 'light';
-            cursor.style.width = '10px';
-            cursor.style.height = '10px';
-            cursor.style.backgroundColor = isLight ? '#400a7f' : '#94e2d5';
-        });
-    });
-}
-/* ==========================================
-   2. BOTÓN DE CONTROL DEL FONDO CANVAS
-   ========================================== */
-const toggleBgBtn = document.getElementById('toggle-bg-btn');
-const toggleBgText = document.getElementById('toggle-bg-text');
+    document.addEventListener('mouseleave', (e) => {
+      const target = e.target;
+      const isInteractive = target.matches('a, button, input, .project-card, .skill-card, .bg-toggle-btn, .theme-toggle-btn') ||
+        target.closest('a, button, .project-card, .skill-card');
 
-if (toggleBgBtn) {
-    // Sincronizar estado inicial del botón con localStorage
-    if (typeof isBgActive !== 'undefined' && !isBgActive) {
-        toggleBgBtn.classList.add('disabled');
-        if (toggleBgText) toggleBgText.innerText = "OFF";
+      if (isInteractive) {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        cursor.style.width = '10px';
+        cursor.style.height = '10px';
+        cursor.style.backgroundColor = isLight ? '#400a7f' : '#94e2d5';
+      }
+    }, true);
+  }
+
+  /* BG TOGGLE */
+  const toggleBgBtn = document.getElementById('toggle-bg-btn');
+  const toggleBgText = document.getElementById('toggle-bg-text');
+
+  function getBgActive() {
+    return typeof window.isBgActive === 'function' ? window.isBgActive() : true;
+  }
+
+  if (toggleBgBtn) {
+    if (!getBgActive()) {
+      toggleBgBtn.classList.add('disabled');
+      if (toggleBgText) toggleBgText.textContent = 'OFF';
     }
 
     toggleBgBtn.addEventListener('click', () => {
-        if (typeof isBgActive !== 'undefined') {
-            if (isBgActive) {
-                stopCanvasAnimation();
-                toggleBgBtn.classList.add('disabled');
-                if (toggleBgText) toggleBgText.innerText = "OFF";
-                localStorage.setItem('bg_active', 'false');
-            } else {
-                startCanvasAnimation();
-                toggleBgBtn.classList.remove('disabled');
-                if (toggleBgText) toggleBgText.innerText = "ON";
-                localStorage.setItem('bg_active', 'true');
-            }
-        }
+      if (getBgActive()) {
+        stopCanvasAnimation();
+        toggleBgBtn.classList.add('disabled');
+        if (toggleBgText) toggleBgText.textContent = 'OFF';
+        localStorage.setItem('bg_active', 'false');
+      } else {
+        startCanvasAnimation();
+        toggleBgBtn.classList.remove('disabled');
+        if (toggleBgText) toggleBgText.textContent = 'ON';
+        localStorage.setItem('bg_active', 'true');
+      }
     });
-}
+  }
 
-/* ==========================================
-   3. COPIAR EMAIL AL PORTAPAPELES
-   ========================================== */
-function copyEmail(button) {
-    const email = "adrianteeeen@gmail.com";
+  /* MOBILE MENU */
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (menuBtn && navMenu) {
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      navMenu.classList.toggle('open', menuOpen);
+      menuBtn.setAttribute('aria-expanded', String(menuOpen));
+      const icon = menuBtn.querySelector('i');
+      if (icon) {
+        icon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }
+    });
+
+    navMenu.querySelectorAll('.nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        navMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        const icon = menuBtn.querySelector('i');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'menu');
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+      });
+    });
+  }
+
+  /* COPY EMAIL */
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-copy-email]');
+    if (!btn) return;
+
+    const email = 'adrianteeeen@gmail.com';
+    const copyText = btn.querySelector('.copy-text');
+    const original = copyText ? copyText.textContent : '';
+
     navigator.clipboard.writeText(email).then(() => {
-        const copyTextElement = button.querySelector('.copy-text');
-        const originalText = copyTextElement ? copyTextElement.innerText : button.innerText;
-        
-        if (copyTextElement) {
-            copyTextElement.innerText = "¡Email Copiado!";
-        } else {
-            button.innerText = "¡Email Copiado!";
-        }
-        
-        button.style.borderColor = "#94e2d5";
-        button.style.color = "#000000";             // <- Texto en negro
-        button.style.backgroundColor = "#94e2d5";
+      if (copyText) copyText.textContent = '¡Email Copiado!';
 
-        setTimeout(() => {
-            if (copyTextElement) {
-                copyTextElement.innerText = originalText;
-            } else {
-                button.innerText = originalText;
-            }
-            button.style.borderColor = "";
-            button.style.color = "";
-        }, 2000);
+      const origBg = btn.style.backgroundColor;
+      const origColor = btn.style.color;
+      const origBorder = btn.style.borderColor;
+
+      btn.style.backgroundColor = '#94e2d5';
+      btn.style.color = '#000000';
+      btn.style.borderColor = '#94e2d5';
+
+      setTimeout(() => {
+        if (copyText) copyText.textContent = original;
+        btn.style.backgroundColor = origBg;
+        btn.style.color = origColor;
+        btn.style.borderColor = origBorder;
+      }, 2000);
     });
-}
-
-/* ==========================================
-   4. TERMINAL INTERACTIVA
-   ========================================== */
-const terminalInput = document.getElementById('terminal-input');
-const terminalBody = document.getElementById('terminal-body');
-
-if (terminalInput) {
-    terminalInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            const command = terminalInput.value.trim().toLowerCase();
-            processCommand(command);
-            terminalInput.value = '';
-        }
-    });
-}
-
-function processCommand(cmd) {
-    const userLine = document.createElement('p');
-    userLine.className = 'term-line';
-    userLine.innerHTML = `<span class="prompt">&gt; ${escapeHtml(cmd)}</span>`;
-    terminalBody.appendChild(userLine);
-
-    const response = document.createElement('p');
-    response.className = 'term-line';
-
-    switch (cmd) {
-        case 'help':
-            response.innerHTML = `Comandos disponibles:<br>
-            - <span class="highlight">skills</span>: Muestra el stack principal.<br>
-            - <span class="highlight">contact</span>: Muestra los datos de contacto.<br>
-            - <span class="highlight">cert</span>: Ver la certificación oficial.<br>
-            - <span class="highlight">clear</span>: Limpiar la pantalla.`;
-            break;
-        case 'skills':
-            response.innerHTML = `Stack: Java | Spring Boot | Angular | Python (PCEPT™) | PostgreSQL | Kubernetes`;
-            break;
-        case 'contact':
-            response.innerHTML = `Email: adrianteeeen@gmail.com | Tel: +34 629 96 88 07 | Ubicación: Badajoz, España`;
-            break;
-        case 'cert':
-            response.innerHTML = `Certificación Oficial: Certified Entry-Level Python Programmer (PCEPT™) por Python Institute.`;
-            break;
-        case 'clear':
-            terminalBody.innerHTML = '<p class="term-line">Escribe <span class="highlight">\'help\'</span> para ver la lista de comandos disponibles.</p>';
-            return;
-        case '':
-            return;
-        default:
-            response.innerHTML = `Comando no reconocido: '${escapeHtml(cmd)}'. Escribe <span class="highlight">'help'</span>.`;
-            break;
-    }
-
-    terminalBody.appendChild(response);
-    terminalBody.scrollTop = terminalBody.scrollHeight;
-}
-
-function escapeHtml(text) {
-    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+  });
+})();

@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrián Ramos Márquez | Desarrollador Full Stack Jr.</title>
-    <!-- Favicon Ciberpunk -->
+    <meta name="description" content="Portfolio de Adrián Ramos Márquez, Desarrollador Full Stack Jr. especializado en Java/Spring Boot y Angular. Certificado PCEPT™.">
+    <meta name="keywords" content="desarrollador full stack, java, spring boot, angular, portfolio, adrián ramos">
+    <meta name="author" content="Adrián Ramos Márquez">
+    <meta name="theme-color" content="#1e1e2e">
+    <meta property="og:title" content="Adrián Ramos Márquez | Desarrollador Full Stack Jr.">
+    <meta property="og:description" content="Portfolio profesional - Java/Spring Boot, Angular, Python (PCEPT™)">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chiarm.github.io/Portfolio/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐀</text></svg>">
-    <!-- Estilos CSS externos -->
-    <link id="theme-stylesheet" rel="stylesheet" href="styles.css">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-    <!-- Cursor Neón Personalizado -->
-    <div id="custom-cursor"></div>
-    <div id="cursor-blur"></div>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <!-- Fondo Futurista Canvas -->
-    <canvas id="bg-canvas"></canvas>
+    <div id="custom-cursor" aria-hidden="true"></div>
+    <div id="cursor-blur" aria-hidden="true"></div>
 
-    <!-- Header / Nav -->
-    <header class="header">
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <header class="header" role="banner">
         <div class="header-container">
-            <a href="#" class="logo">&lt;Adrián Ramos /&gt;</a>
-            <nav>
-                <ul class="nav-menu">
+            <a href="#" class="logo" aria-label="Ir al inicio">&lt;Adrián Ramos /&gt;</a>
+            <nav aria-label="Navegación principal">
+                <ul class="nav-menu" role="list">
                     <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
                     <li><a href="#skills" class="nav-link">Habilidades</a></li>
                     <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
@@ -33,59 +37,68 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="AdrianRamosMarquez.pdf" download class="btn btn-primary">
-                    <i data-lucide="download"></i> CV
+                <a href="AdrianRamosMarquez.pdf" download class="btn btn-primary" aria-label="Descargar currículum en PDF">
+                    <i data-lucide="download" aria-hidden="true"></i> CV
                 </a>
-                <!-- Botón de Control del Fondo a la derecha del CV -->
-                <button id="toggle-bg-btn" class="bg-toggle-btn" title="Activar/Desactivar fondo animado">
-                    <i data-lucide="sparkles" id="toggle-bg-icon"></i>
+                <button id="toggle-bg-btn" class="bg-toggle-btn" title="Activar o desactivar el fondo animado" aria-label="Activar o desactivar el fondo animado">
+                    <i data-lucide="sparkles" aria-hidden="true"></i>
                     <span id="toggle-bg-text">ON</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir o cerrar menú de navegación" aria-expanded="false">
+                    <i data-lucide="menu" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section (Centrado) -->
-<section class="section hero-section hero-centered">
-    <div class="badge">
-        <span class="badge-dot"></span>
-        Buscando oportunidad como Desarrollador Full Stack
-    </div>
-    <h1 class="hero-title">Adrián Ramos Márquez</h1>
-    <h2 class="hero-description">
-        Desarrollador Full Stack Jr. especializado en el ecosistema <strong>Java / Spring Boot</strong> y <strong>Angular</strong>. Certificado oficialmente en Python (PCEPT™) y enfocado en arquitecturas de microservicios, bases de datos SQL/NoSQL y despliegue con Kubernetes.
-    </h2>
-    
-    <div class="hero-actions">
-        <a href="#proyectos" class="btn btn-primary">
-            Ver proyectos <i data-lucide="arrow-right"></i>
-        </a>
-        <a href="AdrianRamosMarquez.pdf" download class="btn btn-secondary">
-            <i data-lucide="download"></i> Descargar CV
-        </a>
-        <button class="btn btn-primary" onclick="copyEmail(this)">
-            <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
-        </button>
-    </div>
-</section>
+    <main id="main-content">
+        <section class="section hero-section hero-centered">
+            <div class="badge" role="status">
+                <span class="badge-dot" aria-hidden="true"></span>
+                Buscando oportunidad como Desarrollador Full Stack
+            </div>
+            <h1 class="hero-title">Adrián Ramos Márquez</h1>
+            <p class="hero-description">
+                Desarrollador Full Stack Jr. especializado en el ecosistema <strong>Java / Spring Boot</strong> y <strong>Angular</strong>. Certificado oficialmente en Python (PCEPT™) y enfocado en arquitecturas de microservicios, bases de datos SQL/NoSQL y despliegue con Kubernetes.
+            </p>
 
-        <!-- Proyectos Section -->
-        <section id="proyectos" class="section">
+            <div class="hero-actions">
+                <a href="#proyectos" class="btn btn-primary">
+                    Ver proyectos <i data-lucide="arrow-right" aria-hidden="true"></i>
+                </a>
+                <a href="AdrianRamosMarquez.pdf" download class="btn btn-secondary" aria-label="Descargar currículum en PDF">
+                    <i data-lucide="download" aria-hidden="true"></i> Descargar CV
+                </a>
+                <button class="btn btn-primary" data-copy-email aria-label="Copiar dirección de correo electrónico">
+                    <i data-lucide="mail" aria-hidden="true"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
+                </button>
+            </div>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <span class="scroll-text">Desplázate</span>
+                <i data-lucide="chevron-down" class="scroll-chevron"></i>
+            </div>
+        </section>
+
+        <section id="proyectos" class="section reveal">
             <div class="section-header">
                 <h2 class="section-title">Proyectos Destacados</h2>
                 <p class="section-subtitle">Soluciones construidas con estándares modernos de desarrollo.</p>
             </div>
 
             <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-preview">[ Arquitectura Microservicios + Angular ]</div>
+                <article class="project-card reveal reveal-delay-1">
+                    <div class="project-preview" aria-hidden="true">[ Arquitectura Microservicios + Angular ]</div>
                     <div class="project-body">
                         <div class="project-header">
                             <h3 class="project-title">Sistema Empresarial de Microservicios</h3>
                             <div class="project-links">
-                                <a href="https://github.com" target="_blank" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
-                                <a href="#" title="Demo en vivo"><i data-lucide="external-link"></i></a>
+                                <a href="https://github.com/chiarm" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub" aria-label="Ver código fuente en GitHub">
+                                    <i data-lucide="github" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" title="Ver demo en vivo (próximamente)" aria-label="Demo en vivo (próximamente)">
+                                    <i data-lucide="external-link" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                         <p class="project-desc">
@@ -94,7 +107,7 @@
                         <div class="project-techs">
                             <span class="tech-tag">Java</span>
                             <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Gradle (Groovy DSL)</span>
+                            <span class="tech-tag">Gradle</span>
                             <span class="tech-tag">Angular</span>
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Kubernetes</span>
@@ -102,14 +115,18 @@
                     </div>
                 </article>
 
-                <article class="project-card">
-                    <div class="project-preview">[ Aplicación Web Full Stack Python ]</div>
+                <article class="project-card reveal reveal-delay-2">
+                    <div class="project-preview" aria-hidden="true">[ Aplicación Web Full Stack Python ]</div>
                     <div class="project-body">
                         <div class="project-header">
                             <h3 class="project-title">Sistema Web de Gestión & Analítica</h3>
                             <div class="project-links">
-                                <a href="https://github.com" target="_blank" title="Código fuente en GitHub"><i data-lucide="github"></i></a>
-                                <a href="#" title="Demo en vivo"><i data-lucide="external-link"></i></a>
+                                <a href="https://github.com/chiarm" target="_blank" rel="noopener noreferrer" title="Ver código fuente en GitHub" aria-label="Ver código fuente en GitHub">
+                                    <i data-lucide="github" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" title="Ver demo en vivo (próximamente)" aria-label="Demo en vivo (próximamente)">
+                                    <i data-lucide="external-link" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                         <p class="project-desc">
@@ -128,16 +145,15 @@
             </div>
         </section>
 
-        <!-- Habilidades Section -->
-        <section id="skills" class="section">
+        <section id="skills" class="section reveal">
             <div class="section-header">
                 <h2 class="section-title">Competencias Técnicas</h2>
-                <p class="section-subtitle">Stack tecnológico y herramientas abarcadas en mi formación.</p>
+                <p class="section-subtitle">Stack tecnológico y herramientas de mi día a día.</p>
             </div>
 
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon"><i data-lucide="server"></i></div>
+                    <div class="skill-icon" aria-hidden="true"><i data-lucide="server"></i></div>
                     <h3 class="skill-title">Backend & Lenguajes</h3>
                     <ul class="skill-list">
                         <li>Java & Spring Boot / Cloud</li>
@@ -149,7 +165,7 @@
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-icon"><i data-lucide="layout"></i></div>
+                    <div class="skill-icon" aria-hidden="true"><i data-lucide="layout"></i></div>
                     <h3 class="skill-title">Frontend & Web</h3>
                     <ul class="skill-list">
                         <li>Angular & RxJS</li>
@@ -161,7 +177,7 @@
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-icon"><i data-lucide="database"></i></div>
+                    <div class="skill-icon" aria-hidden="true"><i data-lucide="database"></i></div>
                     <h3 class="skill-title">Bases de Datos & Cloud</h3>
                     <ul class="skill-list">
                         <li>PostgreSQL & MySQL</li>
@@ -172,67 +188,65 @@
                 </div>
 
                 <div class="skill-card">
-                    <div class="skill-icon"><i data-lucide="wrench"></i></div>
+                    <div class="skill-icon" aria-hidden="true"><i data-lucide="wrench"></i></div>
                     <h3 class="skill-title">DevOps & Herramientas</h3>
                     <ul class="skill-list">
                         <li>Gradle (Groovy DSL) & Maven</li>
                         <li>Git & GitHub Copilot</li>
                         <li>Camunda (BPMN 2.0)</li>
-						<li>Jira (Agile/Scrum) & Asana</li>
+                        <li>Jira (Agile/Scrum) & Asana</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-<!-- Experiencia Section -->
-<section id="experiencia" class="section">
-    <div class="section-header">
-        <h2 class="section-title">Experiencia & Educación</h2>
-        <p class="section-subtitle">Mi trayectoria formativa y habilidades transversales comprobadas.</p>
-    </div>
-
-    <div class="about-grid">
-        <div class="about-text">
-            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Educación Principal</h3>
-            <div style="margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--accent-light, var(--border-color));">
-                <h4 style="font-size: 1.05rem;">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">En fase de finalización — Especialización en Desarrollo Móvil, Programación de Servicios y Procesos, Interfaces y Sistemas de Gestión Empresarial.</p>
+        <section id="experiencia" class="section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Experiencia & Educación</h2>
+                <p class="section-subtitle">Mi trayectoria formativa y habilidades transversales comprobadas.</p>
             </div>
 
-            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem;">Certificación Oficial</h3>
-            <div style="padding-left: 1rem; border-left: 2px solid var(--accent-light, var(--border-color));">
-                <h4 style="font-size: 1.05rem;">Certified Entry-Level Python Programmer (PCEPT™)</h4>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">Python Institute — Certificación oficial que avala fundamentos de programación estructurada, sintaxis y manipulación de datos en Python.</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3 class="about-subtitle">Educación Principal</h3>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
+                        <p class="timeline-desc">En fase de finalización — Especialización en Desarrollo Móvil, Programación de Servicios y Procesos, Interfaces y Sistemas de Gestión Empresarial.</p>
+                    </div>
+
+                    <h3 class="about-subtitle">Certificación Oficial</h3>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Certified Entry-Level Python Programmer (PCEPT™)</h4>
+                        <p class="timeline-desc">Python Institute — Certificación oficial que avala fundamentos de programación estructurada, sintaxis y manipulación de datos en Python.</p>
+                    </div>
+                </div>
+
+                <div class="about-box">
+                    <h3 class="about-box-title">
+                        <i data-lucide="briefcase" aria-hidden="true"></i> +4 años de Experiencia Laboral
+                    </h3>
+                    <p class="about-box-sub">
+                        <strong>Atención al Cliente y Hostelería (Restaurante Malahierba)</strong>
+                    </p>
+                    <ul class="philosophy-list">
+                        <li>
+                            <span class="bullet" aria-hidden="true">•</span>
+                            <span><strong>Trabajo bajo presión:</strong> Coordinación de tareas en entornos de alto ritmo, priorizando demandas operativas.</span>
+                        </li>
+                        <li>
+                            <span class="bullet" aria-hidden="true">•</span>
+                            <span><strong>Trabajo en equipo y comunicación:</strong> Colaboración constante en entornos multidisciplinares para asegurar flujo y calidad.</span>
+                        </li>
+                        <li>
+                            <span class="bullet" aria-hidden="true">•</span>
+                            <span><strong>Resolución de incidencias:</strong> Capacidad de respuesta rápida ante imprevistos con profesionalidad y dinamismo.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="about-box">
-            <h3 class="about-box-title">
-                <i data-lucide="briefcase"></i> +4 años de Experiencia Laboral
-            </h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
-                <strong>Atención al Cliente y Hostelería (Restaurante Malahierba)</strong>
-            </p>
-            <ul class="philosophy-list">
-                <li>
-                    <span class="bullet">•</span>
-                    <span><strong>Trabajo bajo presión:</strong> Coordinación de tareas en entornos de alto ritmo, priorizando demandas operativas.</span>
-                </li>
-                <li>
-                    <span class="bullet">•</span>
-                    <span><strong>Trabajo en equipo y comunicación:</strong> Colaboración constante en entornos multidisciplinares para asegurar flujo y calidad.</span>
-                </li>
-                <li>
-                    <span class="bullet">•</span>
-                    <span><strong>Resolución de incidencias:</strong> Capacidad de respuesta rápida ante imprevistos con profesionalidad y dinamismo.</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-        <!-- Sobre Mí Section -->
-        <section id="sobre-mi" class="section">
+        <section id="sobre-mi" class="section reveal">
             <div class="about-grid">
                 <div class="about-text">
                     <h2 class="section-title">Sobre mí</h2>
@@ -245,19 +259,19 @@
                 </div>
                 <div class="about-box">
                     <h3 class="about-box-title">
-                        <i data-lucide="languages"></i> Idiomas y Soft Skills
+                        <i data-lucide="languages" aria-hidden="true"></i> Idiomas y Soft Skills
                     </h3>
                     <ul class="philosophy-list">
                         <li>
-                            <span class="bullet">•</span>
+                            <span class="bullet" aria-hidden="true">•</span>
                             <span><strong>Español:</strong> Nativo.</span>
                         </li>
                         <li>
-                            <span class="bullet">•</span>
+                            <span class="bullet" aria-hidden="true">•</span>
                             <span><strong>Inglés:</strong> A2/B1 — Lectura fluida de documentación técnica, código y aprendizaje autónomo.</span>
                         </li>
                         <li>
-                            <span class="bullet">•</span>
+                            <span class="bullet" aria-hidden="true">•</span>
                             <span><strong>Gestión y Soft Skills:</strong> Gestión Ágil de Proyectos (Jira/Asana), Liderazgo Inclusivo, Comunicación No Violenta y Resolución de Conflictos.</span>
                         </li>
                     </ul>
@@ -265,51 +279,48 @@
             </div>
         </section>
 
-        <!-- Contacto Section -->
-        <section id="contacto" class="section">
+        <section id="contacto" class="section reveal">
             <div class="contact-container">
                 <h2 class="section-title">¿Conectamos?</h2>
                 <p class="section-subtitle">Estoy disponible para nuevas oportunidades.</p>
 
                 <div class="contact-actions">
-                    <button class="btn btn-primary" onclick="copyEmail(this)">
-                        <i data-lucide="mail"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
+                    <button class="btn btn-primary" data-copy-email aria-label="Copiar dirección de correo electrónico">
+                        <i data-lucide="mail" aria-hidden="true"></i> <span class="copy-text">adrianteeeen@gmail.com</span>
                     </button>
-                    <a href="tel:+34629968807" class="btn btn-secondary">
-                        <i data-lucide="phone"></i> 629 96 88 07
+                    <a href="tel:+34629968807" class="btn btn-secondary" aria-label="Llamar al teléfono">
+                        <i data-lucide="phone" aria-hidden="true"></i> 629 96 88 07
                     </a>
-                    <a href="https://github.com/chiarm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                        <i data-lucide="github"></i> GitHub
+                    <a href="https://github.com/chiarm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Perfil de GitHub">
+                        <i data-lucide="github" aria-hidden="true"></i> GitHub
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-container">
-            <p>© 2026 Adrián Ramos Márquez — Badajoz, España.</p>
+            <p>&copy; 2026 Adrián Ramos Márquez — Badajoz, España.</p>
             <div class="footer-links">
-                <a href="https://github.com/chiarm" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/adrián-ramos-márquez-94623a3ab/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/chiarm" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/adrián-ramos-márquez-94623a3ab/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn">LinkedIn</a>
             </div>
         </div>
     </footer>
 
-    <!-- Botón flotante cambio de tema -->
-    <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
-        <span id="theme-icon">🌞</span>
+    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar entre tema oscuro y claro">
+        <span id="theme-icon" aria-hidden="true">🌞</span>
     </button>
-	<!-- Librería Lenis (CDN) -->
+
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <!-- Scripts del Proyecto -->
     <script>
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     </script>
     <script src="canvas-bg.js"></script>
     <script src="theme-toggle.js"></script>
-	<script src="smooth-scroll.js"></script>
+    <script src="smooth-scroll.js"></script>
+    <script src="scroll-spy.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

@@ -1,166 +1,155 @@
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
 
-let particles = [];
-const particleCount = 70; // Cantidad de nodos cibernéticos
-const maxDistance = 120;  // Distancia máxima para conectar líneas
-let animationFrameId = null;
-let isBgActive = true;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const particleCount = 70;
+  const maxDistance = 120;
+  let animationFrameId = null;
+  let isBgActive = true;
 
-let mouse = {
-    x: null,
-    y: null,
-    radius: 150
-};
+  const mouse = { x: null, y: null, radius: 150 };
 
-// Ajustar tamaño del Canvas al cambiar la pantalla
-function resizeCanvas() {
+  function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-}
+  }
 
-window.addEventListener('resize', resizeCanvas);
-window.addEventListener('mousemove', (e) => {
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('mousemove', (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
-});
-
-window.addEventListener('mouseout', () => {
+  });
+  window.addEventListener('mouseout', () => {
     mouse.x = null;
     mouse.y = null;
-});
+  });
 
-// Clase Partícula / Nodo
-class Particle {
+  class Particle {
     constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.radius = 2;
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = (Math.random() - 0.5) * 0.8;
+      this.radius = 2;
     }
 
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-        if (mouse.x && mouse.y) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < mouse.radius) {
-                let angle = Math.atan2(dy, dx);
-                let force = (mouse.radius - distance) / mouse.radius;
-                this.x -= Math.cos(angle) * force * 3;
-                this.y -= Math.sin(angle) * force * 3;
-            }
+      if (mouse.x && mouse.y) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < mouse.radius) {
+          const angle = Math.atan2(dy, dx);
+          const force = (mouse.radius - distance) / mouse.radius;
+          this.x -= Math.cos(angle) * force * 3;
+          this.y -= Math.sin(angle) * force * 3;
         }
+      }
     }
 
     draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#f5c2e7'; // Verde acento
-        ctx.fill();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = nodeColor;
+      ctx.fill();
     }
-}
+  }
 
-function initCanvas() {
+  function initCanvas() {
     resizeCanvas();
     particles = [];
     for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+      particles.push(new Particle());
     }
-}
+  }
 
-function connectParticles() {
+  function connectParticles() {
     for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            let dx = particles[i].x - particles[j].x;
-            let dy = particles[i].y - particles[j].y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < maxDistance) {
-                let opacity = 1 - (distance / maxDistance);
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(116, 199, 187, ${opacity * 0.25})`; // Verde 500
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
+        if (distance < maxDistance) {
+          const opacity = 1 - distance / maxDistance;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(${lineColor}, ${opacity * 0.25})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
         }
+      }
     }
-}
+  }
 
-// Bucle de animación
-function animate() {
+  function animate() {
     if (!isBgActive) return;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-    });
-
+    particles.forEach((p) => { p.update(); p.draw(); });
     connectParticles();
     animationFrameId = requestAnimationFrame(animate);
-}
+  }
 
-// Funciones globales para activar / desactivar desde el botón
-function stopCanvasAnimation() {
+  window.isBgActive = function () { return isBgActive; };
+
+  window.stopCanvasAnimation = function () {
     isBgActive = false;
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-    }
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+  };
 
-function startCanvasAnimation() {
+  window.startCanvasAnimation = function () {
     if (!isBgActive) {
-        isBgActive = true;
-        animate();
+      isBgActive = true;
+      animate();
     }
-}
+  };
 
-// Cargar preferencia guardada o iniciar por defecto
-const savedBgPref = localStorage.getItem('bg_active');
+  let nodeColor = '#f5c2e7';
+  let lineColor = '116, 199, 187';
 
-initCanvas();
-
-if (savedBgPref === 'false') {
-    isBgActive = false;
-} else {
-    animate();
-}
-// Agrega esta función a tu canvas-bg.js existente para soportar el cambio dinámico de color:
-let nodeColor = '#f5c2e7';
-let lineColor = '116, 199, 187';
-
-// Ajuste de tonos para alta visibilidad y dinamismo según el modo
-function updateCanvasTheme(theme) {
+  window.updateCanvasTheme = function (theme) {
     if (theme === 'light') {
-        // Verde bosque brillante y opacidad equilibrada para fondo claro
-        nodeColor = '#510da0';       
-        lineColor = '81, 13, 160';
+      nodeColor = '#510da0';
+      lineColor = '81, 13, 160';
     } else {
-        // Verde neón brillante para modo oscuro
-        nodeColor = '#f5c2e7';       
-        lineColor = '116, 199, 187';
+      nodeColor = '#f5c2e7';
+      lineColor = '116, 199, 187';
     }
-}
+  };
 
-// Sincronizar tema inicial del canvas
-if (localStorage.getItem('theme') === 'light') {
+  if (localStorage.getItem('theme') === 'light') {
     updateCanvasTheme('light');
-}
+  }
 
-// En la función draw() de Particle dentro de canvas-bg.js, usa nodeColor:
-// ctx.fillStyle = nodeColor;
+  /* PAGE VISIBILITY API */
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (isBgActive && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    } else {
+      if (isBgActive && !animationFrameId) {
+        animate();
+      }
+    }
+  });
 
-// En connectParticles(), usa lineColor:
-// ctx.strokeStyle = `rgba(${lineColor}, ${opacity * 0.25})`;
+  const savedBgPref = localStorage.getItem('bg_active');
+  initCanvas();
+
+  if (savedBgPref === 'false') {
+    isBgActive = false;
+  } else {
+    animate();
+  }
+})();
